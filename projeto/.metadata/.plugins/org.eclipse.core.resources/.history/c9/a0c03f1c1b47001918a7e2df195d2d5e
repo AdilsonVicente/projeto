@@ -1,0 +1,9 @@
+package relatorioskillusportal.model;
+
+import java.io.Serializable;
+
+public class RelatorioPortal implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+
+}

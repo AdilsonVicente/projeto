@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org" 
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{layout/default}">
+  <head>
+  	
+  </head>
+  
+  <body layout:fragment="content">
+	<div class="page-header">
+        <h1 class="page-title">Form Taco Design</h1>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a data-th-href="@{/}">Home</a></li>
+          <li class="breadcrumb-item"><a data-th-href="@{/orders}">Orders</a></li>
+          <li class="breadcrumb-item">Design</li>
+        </ol>
+        
+        <div class="page-header-actions">
+          <button type="button" class="btn btn-sm btn-icon btn-primary btn-round" data-toggle="tooltip"
+            data-original-title="Edit">
+            <i class="icon md-edit" aria-hidden="true"></i>
+          </button>
+          <button type="button" class="btn btn-sm btn-icon btn-primary btn-round" data-toggle="tooltip"
+            data-original-title="Refresh">
+            <i class="icon md-refresh-alt" aria-hidden="true"></i>
+          </button>
+          <button type="button" class="btn btn-sm btn-icon btn-primary btn-round" data-toggle="tooltip"
+            data-original-title="Setting">
+            <i class="icon md-settings" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+      			
+  	  <div class="page-content container-fluid">
+  	  	 <div class="row">
+  	  	 	<div class="col-md-12">
+  	  	 		<div class="panel"> 
+  	  	 			<div class="panel-heading">
+   	  	 				 <h3 class="panel-title">Design your taco</h3>
+   	  	 			</div>
+   	  	 			
+   	  	 			<div class="panel-body container-fluid">
+   	  	 				<form method="POST" th:object="${design}" data-th-action="@{/designmpa}">
+   	  	 					 <div class="form-group form-material floating" data-plugin="formMaterial">
+			                    <input type="text" th:field="*{name}" class="form-control" name="name" />
+			                    <label class="floating-label">Name your taco creation</label>
+			                    <span class="validationError" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+			                 </div>
+			                 
+			                 <div class="row">
+			                 	<div class="col-md-6">
+		                 		<div class="ingredient-group" id="wraps">
+									<h4 class="example-title">Designate your wrap</h4>
+									<div th:each="ingredient : ${wrap}">
+									   <div class="checkbox-custom checkbox-primary">
+					                       <input th:field="*{ingredients}" name="ingredients" type="checkbox" th:value="${ingredient.id}" /> 
+					                       <label th:text="${ingredient.name}">INGREDIENT</label>
+					                   </div>
+									</div>
+								</div>
+								
+								<div class="ingredient-group" id="proteins">
+									<h4 class="example-title">Pick your protein</h4>
+									<div th:each="ingredient : ${protein}"> 
+										<div class="checkbox-custom checkbox-primary">
+					                       <input th:field="*{ingredients}" name="ingredients" type="checkbox" th:value="${ingredient.id}" /> 
+					                       <label th:text="${ingredient.name}">INGREDIENT</label>
+					                    </div> 
+									</div>
+								</div>
+									
+								<div class="ingredient-group" id="cheeses">
+									<h4 class="example-title">Choose your cheese</h4>
+									<div th:each="ingredient : ${cheese}">
+										<div class="checkbox-custom checkbox-primary">
+					                       <input th:field="*{ingredients}" name="ingredients" type="checkbox" th:value="${ingredient.id}" /> 
+					                       <label th:text="${ingredient.name}">INGREDIENT</label>
+					                    </div>
+									</div>
+								</div>	
+			                 </div>
+                  				
+                  			<div class="col-md-6">
+								<div class="ingredient-group" id="veggies">
+									<h4 class="example-title">Determine your veggies</h4>
+									<div th:each="ingredient : ${veggies}">
+										<div class="checkbox-custom checkbox-primary">
+					                       <input th:field="*{ingredients}" name="ingredients" type="checkbox" th:value="${ingredient.id}" /> 
+					                       <label th:text="${ingredient.name}">INGREDIENT</label>
+					                    </div>
+									</div>
+								</div>
+								
+								<div class="ingredient-group" id="sauces">
+									<h4 class="example-title">Select your sauce</h4>
+									<div th:each="ingredient : ${sauce}">
+										<div class="checkbox-custom checkbox-primary">
+					                       <input th:field="*{ingredients}" name="ingredients" type="checkbox" th:value="${ingredient.id}" /> 
+					                       <label th:text="${ingredient.name}">INGREDIENT</label>
+					                    </div>
+									</div>
+								</div>
+                  			  </div>	
+			                </div>
+				
+							<div>
+								<button class="btn btn-info" type="submit">Submit your taco</button>
+							</div>
+						</form>
+   	  	 			</div>
+  	  	 		</div>
+  	  	 	</div>
+  	  	 </div>
+  	  </div>	
+  </body>
+</html>

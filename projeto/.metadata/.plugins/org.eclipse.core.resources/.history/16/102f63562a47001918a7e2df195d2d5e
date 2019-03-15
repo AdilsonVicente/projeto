@@ -1,0 +1,11 @@
+package relatorioskillusportal.repositorio.helper;
+
+import java.util.List;
+
+import relatorioskillusportal.dto.VendaCiclo;
+
+public interface VendasQueries {
+	
+	public List<VendaCiclo> totalPorCiclo();
+
+}

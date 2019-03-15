@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+  <body data-th-fragment="side-menu-left"> 
+     <div class="site-menubar">
+	      <ul class="site-menu">
+	        <li class="site-menu-item">
+	          <a class="animsition-link" data-th-href="@{/}">
+                  <i class="site-menu-icon md-home" aria-hidden="true"></i>
+                  <span class="site-menu-title">Home</span>
+              </a>
+	        </li>
+	        <li class="site-menu-item">
+	          <a class="animsition-link" data-th-href="@{/orders}">
+	                  <i class="site-menu-icon md-store" aria-hidden="true"></i>
+	                  <span class="site-menu-title">Tacos</span>
+	              </a>
+	        </li> 
+	        
+	        <li class="site-menu-item">
+	          <a class="animsition-link" data-th-href="@{/orders}">
+	                  <i class="site-menu-icon md-receipt" aria-hidden="true"></i>
+	                  <span class="site-menu-title">Ingredients</span>
+	              </a>
+	        </li> 
+		</ul>
+      </div>    
+      
+      <div data-th-replace="layout/fragments/side-menu-grid :: side-menu-grid"></div> 
+  </body>
+</html>

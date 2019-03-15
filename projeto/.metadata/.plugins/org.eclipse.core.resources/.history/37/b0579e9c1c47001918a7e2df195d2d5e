@@ -1,0 +1,13 @@
+package relatorioskillusportal.model;
+
+
+import javax.persistence.Entity;
+import javax.persistence.PersistenceUnit;
+
+import org.hibernate.annotations.DynamicUpdate;
+
+
+@PersistenceUnit(unitName = "mysql")
+public class RelatorioPortal {
+
+}

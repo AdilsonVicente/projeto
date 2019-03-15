@@ -1,0 +1,18 @@
+var AnaliseSkillus = AnaliseSkillus || {};
+
+AnaliseSkillus.GraficoVendaPorMes = (function() {
+	function GraficoVendaPorMes() {
+	
+	}
+	
+	GraficoVendaPorMes.prototype.iniciar = function() {
+		
+	}
+	
+	return GraficoVendaPorMes;
+}());
+
+$(function() {
+	var graficoVendaMes = new AnaliseSkillus.GraficoVendaPorMes();
+	graficoVendaMes.iniciar();
+});

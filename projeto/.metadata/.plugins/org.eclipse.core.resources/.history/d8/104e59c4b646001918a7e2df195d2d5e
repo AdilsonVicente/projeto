@@ -1,0 +1,57 @@
+package relatorioskillusportal.com.br.config;
+
+import javax.persistence.EntityManagerFactory;
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+import relatorioskillusportal.com.br.dto.VendaCiclo;
+import relatorioskillusportal.com.br.repositorio.RelatoriosPortal;
+
+@Configuration
+@EnableTransactionManagement
+@EnableJpaRepositories(basePackageClasses=RelatoriosPortal.class ,
+						entityManagerFactoryRef="jpaMysqlDBEmFactory" , 
+						transactionManagerRef = "jpaOracleDSTransactionManager")
+public class JPAMysqlPortalConfig {
+	
+	   @Bean
+       @ConfigurationProperties(prefix = "spring.datasourcebanco3")
+     public DataSourceProperties jpaMysqlDSProperties() {
+             return new DataSourceProperties();
+                
+ }
+ 
+  @Bean
+      public DataSource jpaMysqlDataSource(@Qualifier("jpaMysqlDSProperties") DataSourceProperties jpaMysqlDSProperties) {
+            
+             DataSource dataSource = jpaMysqlDSProperties.initializeDataSourceBuilder().build();
+              return dataSource;
+       }
+       
+        @Bean
+    public LocalContainerEntityManagerFactoryBean jpaMysqlDBEmFactory(@Qualifier("jpaMysqlDataSource") DataSource jpaMysqlDataSource, EntityManagerFactoryBuilder builder) {
+          LocalContainerEntityManagerFactoryBean factory = builder.dataSource(jpaMysqlDataSource).packages(VendaCiclo.class).build();
+         factory.setPersistenceUnitName("datasourcebanco3");
+              return factory; 
+   }
+   
+    
+     @Bean
+ public PlatformTransactionManager jpaMysqlDSTransactionManager(EntityManagerFactory factory) {
+         return new JpaTransactionManager(factory);
+    }
+    
+     
+}
+

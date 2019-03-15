@@ -1,0 +1,31 @@
+package relatorioskillusportal.model;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+import relatorioskillusportal.dto.VendaCiclo;
+
+@Entity
+public class RelatorioPortal {
+
+	@Id
+	private Long codigo;
+	
+	private VendaCiclo vendaCiclo;
+
+	public Long getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
+	}
+
+	public VendaCiclo getVendaCiclo() {
+		return vendaCiclo;
+	}
+
+	public void setVendaCiclo(VendaCiclo vendaCiclo) {
+		this.vendaCiclo = vendaCiclo;
+	}
+}

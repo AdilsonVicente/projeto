@@ -1,0 +1,8 @@
+spring.mvc.locale-resolver=fixed
+spring.mvc.locale=pt_BR
+
+spring.thymeleaf.mode=HTML
+
+spring.datasource.url=jdbc:oracle:thin://192.168.10.212/TESTE?useSSL=false&allowPublicKeyRetrieval=true
+spring.datasource.username=SKL11
+spring.datasource.password=T7G3J4V8

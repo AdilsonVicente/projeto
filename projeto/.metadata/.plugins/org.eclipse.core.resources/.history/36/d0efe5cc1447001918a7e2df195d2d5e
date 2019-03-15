@@ -1,0 +1,22 @@
+package relatorioskillusportal.repositorio.helper;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import relatorioskillusportal.dto.VendaCiclo;
+
+public class VendasImpl implements VendasQueries{
+
+	@PersistenceContext(unitName = "datasource")
+	private EntityManager manager;
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<VendaCiclo> totalPorCiclo() {
+		return manager.createNamedQuery("Vendas.totalPorCiclo").getResultList();
+		
+	}
+
+}

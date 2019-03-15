@@ -1,0 +1,87 @@
+/*
+######################################
+# CUSTOMIZAcao DE COMPONENTES
+######################################
+*/
+
+.checkbox input[type="checkbox"]:checked + input + label::after {
+    font-family: 'FontAwesome';
+    content: "\f00c"; 
+}
+
+/* Colunas - Pesquisa de usuarios */
+.table-usuarios-col-status {
+	width: 30px;
+	text-align: center;
+}
+
+/* Colunas comuns */
+.table-col-acoes {
+	width: 80px;
+}
+
+/* Tabela Simples */
+.sk-tabela-simples {
+	margin-top: 15px;
+}
+
+.sk-tabela-simples table tr th {
+	border-bottom-width: 1px;
+}
+
+.sk-tabela-simples table tr td {
+    border-top: none;
+    border-bottom: 1px solid #e7eaec;
+    padding: 10px;
+    vertical-align: middle;
+}
+
+/* utilidades*/
+.sk-required > .control-label:after {
+	content: "*"
+}
+
+/* Upload */
+.sk-upload {
+	padding: 15px;
+	
+	border: 1px dashed #ddd;
+	border-radius: 4px;
+	background: #fafafa;
+	
+	text-align: center;
+}
+
+.sk-upload-form-file {
+	display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 1px;
+}
+
+.sk-upload-form-file > input[type=file] {
+	position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    opacity: 0;
+    cursor: pointer;
+    
+font-size: 500px;
+}
+
+.uk-placeholder {
+    margin-top: 15px;
+}
+.uk-placeholder {
+    margin-bottom: 15px;
+    padding: 15px;
+    border: 1px dashed #E5E5E5;
+    background: #fafafa;
+    color: #666;
+}
+.uk-text-center {
+    text-align: center !important;
+}

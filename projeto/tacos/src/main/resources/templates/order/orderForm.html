@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org" 
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{layout/default}">
+<head>
+</head>
+<body layout:fragment="content">
+
+	<div class="page-header">
+        <h1 class="page-title">Order Taco Creation</h1>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a data-th-href="@{/}">Home</a></li>
+          <li class="breadcrumb-item active">Design</li>
+        </ol>
+        
+        <div class="page-header-actions">
+          <button type="button" class="btn btn-sm btn-icon btn-primary btn-round" data-toggle="tooltip"
+            data-original-title="Edit">
+            <i class="icon md-edit" aria-hidden="true"></i>
+          </button>
+          <button type="button" class="btn btn-sm btn-icon btn-primary btn-round" data-toggle="tooltip"
+            data-original-title="Refresh">
+            <i class="icon md-refresh-alt" aria-hidden="true"></i>
+          </button>
+          <button type="button" class="btn btn-sm btn-icon btn-primary btn-round" data-toggle="tooltip"
+            data-original-title="Setting">
+            <i class="icon md-settings" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+      
+      <div class="page-content container-fluid">
+  	  	 <div class="row">
+  	  	 	<div class="col-md-12">
+  	  	 		<div class="panel"> 
+  	  	 			<div class="panel-heading">
+   	  	 				 <h3 class="panel-title">Order your taco creations</h3>
+   	  	 			</div>
+   	  	 			
+   	  	 			<div class="panel-body container-fluid">
+   	  	 				<form method="POST" th:action="@{/orders}" th:object="${order}">
+							<div class="row">
+								<div class="col-sm-12 col-md-6">
+									<h4 class="example-title">Deliver my taco masterpieces to</h4>
+								</div>	
+								<div class="col-sm-12 col-md-6">
+									<a th:href="@{/designmpa}" id="another" class="float-right">Design another taco</a> <br />
+								</div>
+								
+								<div class="summary-errors alert alert-danger alert-dismissible col-md-12" th:if="${#fields.hasErrors()}">
+				                    <button type="button" class="close" aria-label="Close" data-dismiss="alert">
+				                      <span aria-hidden="true">×</span>
+				                    </button>
+			                    	<p>Please correct the problems below and resubmit. </p>
+			                  	</div>
+                   	
+								
+								<div class="col-md-12">
+									<div class="form-group form-material floating" data-plugin="formMaterial">
+		                    			<input type="text" th:field="*{name}" class="form-control" name="name" data-th-classappend="${#fields.hasErrors('name')} ? is-invalid : ''"/>
+		                    			<label class="floating-label">Name</label>
+		                    			<div class="invalid-feedback">
+						                     <span th:errors="*{name}"></span>
+						           		</div>
+		                 			</div>
+								</div>	
+									
+			                 	<div class="col-md-9">
+			                 		<div class="form-group form-material floating" data-plugin="formMaterial">
+				                    	<input type="text" th:field="*{street}" class="form-control" name="street" data-th-classappend="${#fields.hasErrors('street')} ? is-invalid : ''"/>
+				                    	<label class="floating-label">Street address</label>
+				                    	 <div class="invalid-feedback">
+						                     <span th:errors="*{street}"></span>
+						           		</div>
+				                 	</div>
+			                 	</div>
+		                 		 
+			                 	<div class="col-md-3">
+									<div class="form-group form-material floating" data-plugin="formMaterial">
+				                    	<input type="text" th:field="*{zip}" class="form-control" name="zip" data-th-classappend="${#fields.hasErrors('zip')} ? is-invalid : ''"/>
+				                    	<label class="floating-label">Zip Code</label>
+				                    	 <div class="invalid-feedback">
+						                     <span th:errors="*{zip}"></span>
+						           		</div>
+				                 	</div>
+								</div>
+								
+		                 		
+				                 <div class="col-md-6">
+				                 	<div class="form-group form-material floating" data-plugin="formMaterial">
+				                    	<input type="text" th:field="*{city}" class="form-control" name="city" data-th-classappend="${#fields.hasErrors('city')} ? is-invalid : ''"/>
+				                    	<label class="floating-label">City</label>
+				                    	 <div class="invalid-feedback">
+						                     <span th:errors="*{city}"></span>
+						           		</div>
+				                 	</div>
+				                 </div>
+				                 
+				                 <div class="col-md-6">
+				                 	<div class="form-group form-material floating" data-plugin="formMaterial">
+				                    	<input type="text" th:field="*{state}" class="form-control" name="state" data-th-classappend="${#fields.hasErrors('state')} ? is-invalid : ''"/>
+				                    	<label class="floating-label">State</label>
+				                    	 <div class="invalid-feedback">
+						                     <span th:errors="*{state}"></span>
+						           		</div>
+				                 	</div>
+				                 </div>
+							</div>
+								 
+						    <h4 class="example-title">Here's how I'll pay</h4>		
+							<div class="row">
+								<div class="col-md-5">
+									<div class="form-group form-material floating " data-plugin="formMaterial">
+				                    	<input type="text" th:field="*{ccNumber}" class="form-control" name="ccNumber" data-th-classappend="${#fields.hasErrors('ccNumber')} ? is-invalid : ''"/>
+				                    	<label class="floating-label">Credit Card</label>
+				                    	<div class="invalid-feedback">
+						                     <span th:errors="*{ccNumber}"></span>
+						           		</div>
+				                	</div>
+								</div>	
+									
+				                 <div class="col-md-5">
+					                 <div class="form-group form-material floating" data-plugin="formMaterial">
+					                    <input type="text" th:field="*{ccExpiration}" class="form-control" name="ccExpiration" data-th-classappend="${#fields.hasErrors('ccExpiration')} ? is-invalid : ''"/>
+					                    <label class="floating-label">Expiration</label>
+					                    <div class="invalid-feedback">
+						                     <span th:errors="*{ccExpiration}"></span>
+						           		</div>
+					                 </div>
+				                 </div>
+				                 
+				                 <div class="col-md-2">
+					                 <div class="form-group form-material floating " data-plugin="formMaterial">
+					                    <input type="text" th:field="*{ccCVV}" class="form-control" name="ccCVV" data-th-classappend="${#fields.hasErrors('ccCVV')} ? is-invalid : ''"/>
+					                    <label class="floating-label">CVV</label>
+					                    <div class="invalid-feedback">
+						                     <span th:errors="*{ccExpiration}"></span>
+						           		</div>
+					                 </div>
+				                 </div>
+							</div>
+							<div>
+								<button class="btn btn-info" type="submit">Submit order</button>
+							</div>		  
+						</form> 
+   	  	 			</div>
+  	  	 		</div>
+  	  	 	</div>
+  	  	 </div>
+  	  </div>
+</body>
+</html>

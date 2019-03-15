@@ -1,0 +1,15 @@
+package relatorioskillusportal.repositorio.helper;
+
+import java.math.BigDecimal;
+import java.util.List;
+
+
+import relatorioskillusportal.dto.VendaCiclo;
+
+public interface VendasQueries {
+	
+	public List<VendaCiclo> totalPorCiclo();
+	
+	public BigDecimal totalVendaPorCiclo();
+
+}

@@ -1,0 +1,25 @@
+
+spring.mvc.locale-resolver=fixed
+spring.mvc.locale=pt_BR
+
+spring.thymeleaf.mode=HTML
+
+spring.datasource.url=jdbc:mysql://localhost/analiseskillus?useSSL=false&allowPublicKeyRetrieval=true
+spring.datasource.username=root
+spring.datasource.password=root
+spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+
+
+spring.data jdbc:oracle:thin:@192.168.10.222:1521:SKL1
+spring.datasourcebanco2.username=SKL11
+spring.datasourcebanco2.password=T7G3J4V8
+spring.datasourcebanco2.driver-class-name=oracle.jdbc.driver.OracleDriver
+
+spring.datasourcebanco3.url=jdbc:mysql://aa1bwbnv2uq5l22.cedggzlidqs5.sa-east-1.rds.amazonaws.com/skillus4?useSSL=false&allowPublicKeyRetrieval=true
+spring.datasourcebanco3.username=webner
+spring.datasourcebanco3.password=6wbPM7wh
+spring.datasourcebanco3.driver-class-name=com.mysql.jdbc.Driver
+
+
+analiseskillus.foto-storage-local.url-base=http//localhost/8080/fotos/
+analiseskillus.foto-storage-local.local=${user.home}/.analiseskillus/fotos

@@ -1,0 +1,19 @@
+logging:
+  level:
+    root: WARN 
+
+spring:
+  datasource:
+     username: root
+     password: root
+     url: jdbc:mysql://localhost:3306/taco?createDatabaseIfNotExist=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+  jpa:
+    show-sql: false
+  
+server:
+  port: 443
+  ssl:
+    key-password: 123456
+    key-store: src/main/resources/mykeys.jks
+    key-store-password: 123456
+  

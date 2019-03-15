@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "analiseskillus.foto-storage-local.url-base",
+    "type": "java.lang.String",
+    "description": "A description for 'analiseskillus.foto-storage-local.url-base'"
+  },
+  {
+    "name": "analiseskillus.foto-storage-local.local",
+    "type": "java.lang.String",
+    "description": "A description for 'analiseskillus.foto-storage-local.local'"
+  }
+]}

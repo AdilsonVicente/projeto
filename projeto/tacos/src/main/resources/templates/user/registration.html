@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html class="no-js css-menubar" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="bootstrap material admin template">
+    <meta name="author" content="">
+    
+    <title>Register V3 | Remark Admin Template</title>
+    
+    <link rel="apple-touch-icon" data-th-href="@{/theme/assets/images/apple-touch-icon.png}">
+    <link rel="shortcut icon" data-th-href="@{/theme/assets/images/favicon.ico}">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" data-th-href="@{/theme/css/bootstrap.min.css}">
+    <link rel="stylesheet" data-th-href="@{/theme/css/bootstrap-extend.min.css}">
+    <link rel="stylesheet" data-th-href="@{/theme/assets/css/site.css}">
+    
+    <!-- Plugins -->
+    <link rel="stylesheet" data-th-href="@{/theme/vendor/animsition/animsition.css}"> 
+    <link rel="stylesheet" data-th-href="@{/theme/assets/examples/css/pages/register-v3.css}"> 
+    
+    <!-- Fonts -->
+    <link rel="stylesheet" data-th-href="@{/theme/fonts/material-design/material-design.min.css}">
+    <link rel="stylesheet" data-th-href="@{/theme/fonts/brand-icons/brand-icons.min.css}"> 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic">
+             
+  </head>
+  <body class="animsition page-register-v3 layout-full">
+  
+    <!-- Page -->
+   <div class="page vertical-align text-center" data-animsition-in="fade-in" data-animsition-out="fade-out">
+      <div class="page-content vertical-align-middle animation-slide-top animation-duration-1">
+        
+        <div class="panel">
+          <div class="panel-body">
+            <div class="brand">
+              <img class="brand-img" data-th-src="@{/theme/assets/images/logo-colored.png}" alt="...">
+              <h2 class="brand-text font-size-18">Remark</h2>
+            </div>
+            
+            <form method="post" data-th-action="@{/registration}" data-th-object="${registrationForm}">
+              
+              <div class="form-group form-material floating" data-plugin="formMaterial">
+                <input type="text" class="form-control" name="fullname" required="required"/>
+                <label class="floating-label">Full Name</label>
+                <small data-th-if="${#fields.hasErrors('fullname')}" class="text-danger" data-th-errors="*{fullname}"></small>
+              </div>
+              
+              <div class="form-group form-material floating" data-plugin="formMaterial">
+                <input type="email" class="form-control" name="username" required="required"/>
+                <label class="floating-label">Email</label>
+                <small data-th-if="${#fields.hasErrors('username')}" class="text-danger" data-th-errors="username"></small>
+              </div>
+              
+              <div class="form-group form-material floating" data-plugin="formMaterial">
+                <input type="password" class="form-control" name="password" required="required"/>
+                <label class="floating-label">Password</label>
+                <small data-th-if="${#fields.hasErrors('password')}" class="text-danger" data-th-errors="password"></small>
+              </div>
+              
+              <div class="form-group form-material floating" data-plugin="formMaterial">
+                <input type="password" class="form-control" name="PasswordCheck" required="required"/>
+                <label class="floating-label">Re-enter Password</label>
+                <small data-th-if="${#fields.hasErrors('password')}" class="text-danger" data-th-errors="password"></small>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block btn-lg mt-40">Sign up</button>
+            </form>
+            <p>Have account already? Please go to <a data-th-href="@{/login}">Sign In</a></p>
+          </div>
+        </div> 
+      </div>
+    </div>
+    <!-- End Page -->
+
+
+    <!-- Core  -->
+    <script data-th-src="@{/theme/vendor/babel-external-helpers/babel-external-helpers.js}"></script>
+    <script data-th-src="@{/theme/vendor/jquery/jquery.js}"></script> 
+    <script data-th-src="@{/theme/vendor/bootstrap/bootstrap.js}"></script>
+    <script data-th-src="@{/theme/vendor/animsition/animsition.js}"></script> 
+ 
+    <!-- Scripts -->
+    <script data-th-src="@{/theme/js/Component.js}"></script>
+    <script data-th-src="@{/theme/js/Plugin.js}"></script>
+    <script data-th-src="@{/theme/js/Base.js}"></script>
+    <script data-th-src="@{/theme/js/Config.js}"></script>
+     
+     
+    <!-- Page -->
+    <script data-th-src="@{/theme/assets/js/Site.js}"></script> 
+    <script data-th-src="@{/theme/js/Plugin/material.js}"></script>
+    
+    <script>
+      (function(document, window, $){
+        var Site = window.Site;
+        $(document).ready(function(){
+          Site.run();
+        });
+      })(document, window, jQuery);
+    </script>
+  </body>
+</html>

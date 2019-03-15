@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml" />
+
+    <logger name="analiseskillus.com.br" level="debug" />
+
+    <springProfile name="default">      
+        <logger name="org.hibernate.SQL" level="debug" />
+    </springProfile>
+</configuration>

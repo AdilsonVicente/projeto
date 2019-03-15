@@ -1,0 +1,16 @@
+spring.mvc.locale-resolver=fixed
+spring.mvc.locale=pt_BR
+
+spring.thymeleaf.mode=HTML
+
+spring.datasource.url=jdbc:mysql://localhost/analiseskillus?useSSL=false&allowPublicKeyRetrieval=true
+spring.datasource.username=root
+spring.datasource.password=root
+spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+
+
+spring.datasourcebanco2.url=jdbc:oracle:thin:@192.168.10.222:1521:SKL1
+spring.datasourcebanco2.username=SKL11
+spring.datasourcebanco2.password=T7G3J4V8
+spring.datasourcebanco2.driver-class-name=oracle.jdbc.driver.OracleDriver
+

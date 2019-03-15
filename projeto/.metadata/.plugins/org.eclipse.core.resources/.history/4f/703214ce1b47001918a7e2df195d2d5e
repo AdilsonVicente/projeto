@@ -1,0 +1,15 @@
+package relatorioskillusportal.model;
+
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+
+import org.hibernate.annotations.DynamicUpdate;
+
+@DynamicUpdate
+@Entity
+public class RelatorioPortal implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+
+}

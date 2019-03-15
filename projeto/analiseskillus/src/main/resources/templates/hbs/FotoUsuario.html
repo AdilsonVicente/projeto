@@ -1,0 +1,12 @@
+<script id="foto-usuario" type="text/x-handlebars-template">
+	<div class="row  js-foto-usuario">
+		<div class="col-md-4"></div>
+		<div class="col-md-4">
+			<a href="#" class="thumbnail">
+				<img th:src="@{/fotos/{{foto}}}"></img>
+			</a>
+			<button type="button" class="btn  btn-link  js-remove-foto"><span class="icon md-remove"></span>remove</button>
+		</div>
+		<div class="col-md-4"></div>
+	</div>
+</script>

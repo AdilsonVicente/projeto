@@ -1,0 +1,7 @@
+package relatorioskillusportal.com.br.repositorio.helper;
+
+public interface VendasQueries {
+	
+	//public List<VendaCiclo> totalPorCiclo();
+
+}

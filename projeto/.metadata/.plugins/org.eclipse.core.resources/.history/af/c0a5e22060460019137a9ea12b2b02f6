@@ -1,0 +1,5 @@
+package relatorioskilluspotal.com.br.config;
+
+public class JPAMysqlPortalConfig {
+
+}

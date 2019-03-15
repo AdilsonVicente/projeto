@@ -1,0 +1,12 @@
+package relatorioskillusportal.model;
+
+
+import javax.persistence.Entity;
+
+import org.hibernate.annotations.DynamicUpdate;
+
+@DynamicUpdate
+@Entity
+public class RelatorioPortal {
+
+}

@@ -1,0 +1,5 @@
+package relatorioskillus.com.br.repositorio;
+
+public interface relatorios {
+
+}

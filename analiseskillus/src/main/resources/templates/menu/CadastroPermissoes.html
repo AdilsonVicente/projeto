@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html class="no-js css-menubar" lang="pt"
+      xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  xmlns:skillus="http://analise.skillus.com.br"
+	  layout:decorate="~{layout/LayoutPadrao}">
+  <head>
+    
+    <title>Cadastro de Permissões</title>
+    
+	
+  </head>
+	   
+	<body class="animsition site-navbar-small dashboard">
+		
+		<section layout:fragment="conteudo">
+		
+		<div class="page">
+			<div class="page-header">
+				<div class="row">
+					<div class="col-xs-10">
+						<h1 class="page-title">Cadastro de Permissões</h1>
+					</div>
+									
+						 <div class="page-header-actions">
+						 	<div class="col-xs-2">
+									<a class="btn btn-default" th:href="@{/permissoes}">
+										<i class="glyphicon glyphicon-plus-sign"></i><span class="hidden-xs hidden-sm"> Pesquisa </span>
+									</a>
+	                      <!-- <button type="button" class="btn btn-sm btn-icon btn-primary btn-round" 
+	                                 data-toggle="tooltip" data-original-title="Pesquisar" th:href="@{/usuarios}">
+	                                 <i class="icon md-plus-sign" aria-hidden="true"></i>
+	                          </button>  --> 
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>   
+		    <div class="page-content">
+        		<!-- Panel Form Elements -->
+        		<div class="panel">
+         			<div class="panel-heading">
+         			 	<div class="container-fluid">
+
+						<form method="POST" th:object="${permissao}" class="form-vertical  js-form-loading" th:action="@{/permissoes/nova}">
+								
+								<div class="row">
+									<div class="col-sm-3  form-group sk-required" skillus:classforerror="nome">
+										<label class="control-label" for="nome" >Nome</label>
+										<input id="nome" type="text" class="form-control" autofocus="autofocus" th:field="*{nome}"/>
+									</div>	
+									
+									<div class="col-sm-9  form-group sk-required" skillus:classforerror="nome">
+										<label class="control-label" for="url" >URL</label>
+										<input id="url" type="text" class="form-control" th:field="*{url}"/>
+									</div>	
+								
+								<div class="form-group">
+									<button class="btn  btn-primary" type="submit">Adicionar ícone</button>
+								</div>
+									
+								</div>
+									<div class="form-group">
+										<button class="btn  btn-primary" type="submit">Salvar</button>
+									</div>
+		
+						</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</section>
+		 
+</body>
+</html>

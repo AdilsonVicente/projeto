@@ -1,0 +1,7 @@
+package analiseskillus.com.br.config;
+
+import org.springframework.format.Formatter;
+
+public class LocalDateFormatter implements Formatter<T> {
+
+}

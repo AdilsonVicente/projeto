@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
+	http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd">
+
+	<changeSet author="allan" id="20190213_1016A" failOnError="true" runAlways="false" >
+		<preConditions>
+			<not>
+				<tableExists tableName="user"/>
+			</not>
+		</preConditions>
+		<sql>
+			<![CDATA[
+				CREATE TABLE IF not exists user (
+					id BIGINT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+					username VARCHAR(50) NOT NULL,
+					password VARCHAR(255) NOT NULL,
+					fullname VARCHAR(100) NOT NULL,
+					street VARCHAR(100),
+					zip VARCHAR(20),
+					city VARCHAR(80),
+					state VARCHAR(50), 
+					phone VARCHAR(20) 
+				) ENGINE=InnoDB DEFAULT CHARSET=utf8;				 
+			]]>
+		</sql>	
+	</changeSet>
+	
+	<changeSet author="allan" id="20190213_1016B" failOnError="true" runAlways="false" >
+		<preConditions>
+			<not>
+				<tableExists tableName="ingredient"/>
+			</not>
+		</preConditions>
+		<sql>
+			<![CDATA[
+				CREATE TABLE IF not exists ingredient (
+					id VARCHAR(4) PRIMARY KEY NOT NULL,
+					name VARCHAR(25) NOT NULL,
+					type VARCHAR(10) NOT NULL
+				) ENGINE=InnoDB DEFAULT CHARSET=utf8;;
+			]]>
+		</sql>	
+	</changeSet>
+	
+	<changeSet author="allan" id="20190213_1016C" failOnError="true" runAlways="false" >
+		<preConditions>
+			<not>
+				<tableExists tableName="taco"/>
+			</not>
+		</preConditions>
+		<sql>
+			<![CDATA[
+				CREATE TABLE IF not exists taco (
+					id BIGINT PRIMARY KEY AUTO_INCREMENT,
+					name VARCHAR(50) NOT NULL,
+					created_at TIMESTAMP NOT NULL
+				) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+			]]>
+		</sql>	
+	</changeSet>
+	
+	<changeSet author="allan" id="20190213_1016D" failOnError="true" runAlways="false" >
+		<preConditions>
+			<not>
+				<tableExists tableName="taco_ingredient"/>
+			</not>
+		</preConditions>
+		<sql>
+			<![CDATA[
+				CREATE TABLE IF not exists taco_ingredient (
+					taco BIGINT NOT NULL,
+					ingredient VARCHAR(4) NOT NULL
+				) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+				
+				ALTER TABLE taco_ingredient ADD FOREIGN KEY (taco) REFERENCES taco(id);
+				ALTER TABLE taco_ingredient ADD FOREIGN KEY (ingredient) REFERENCES ingredient(id);
+			]]>
+		</sql>	
+	</changeSet>
+	
+	<changeSet author="allan" id="20190213_1016E" failOnError="true" runAlways="false" >
+		<preConditions>
+			<not>
+				<tableExists tableName="taco_order"/>
+			</not>
+		</preConditions>
+		<sql>
+			<![CDATA[
+				CREATE TABLE IF not exists taco_order (
+					id BIGINT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+					user BIGINT NOT NULL,
+					delivery_name VARCHAR(50) NOT NULL,
+					delivery_street VARCHAR(50) NOT NULL,
+					delivery_city VARCHAR(50) NOT NULL,
+					delivery_state VARCHAR(50) NOT NULL,
+					delivery_zip VARCHAR(50) NOT NULL,
+					cc_number VARCHAR(16) NOT NULL,
+					cc_expiration VARCHAR(5) NOT NULL,
+					cc_cvv VARCHAR(3) NOT NULL,
+					placed_at TIMESTAMP NOT NULL
+				) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+				
+				ALTER TABLE taco_order ADD FOREIGN KEY (user) REFERENCES user(id);
+			]]>
+		</sql>	
+	</changeSet>
+	
+	<changeSet author="allan" id="20190213_1016F" failOnError="true" runAlways="false" >
+		<preConditions>
+			<not>
+				<tableExists tableName="taco_order_tacos"/>
+			</not>
+		</preConditions>
+		<sql>
+			<![CDATA[
+				CREATE TABLE IF not exists taco_order_tacos (
+					taco_order BIGINT NOT NULL,
+					taco BIGINT NOT NULL
+				) ENGINE=InnoDB DEFAULT CHARSET=utf8;;
+				
+				ALTER TABLE taco_order_tacos ADD FOREIGN KEY (taco_order) REFERENCES taco_order(id);
+				ALTER TABLE taco_order_tacos ADD FOREIGN KEY (taco) REFERENCES taco(id);
+			]]>
+		</sql>	
+	</changeSet>
+	
+	<changeSet author="allan" id="20190213_1016G" failOnError="true" runAlways="false" >
+		<preConditions>
+			<tableExists tableName="ingredient"/>
+		</preConditions>
+		<sql>
+			<![CDATA[			
+				insert into Ingredient (id, name, type) values ('FLTO', 'Flour Tortilla', 'WRAP');
+				insert into Ingredient (id, name, type) values ('COTO', 'Corn Tortilla', 'WRAP');
+				insert into Ingredient (id, name, type) values ('GRBF', 'Ground Beef', 'PROTEIN');
+				insert into Ingredient (id, name, type) values ('CARN', 'Carnitas', 'PROTEIN');
+				insert into Ingredient (id, name, type) values ('TMTO', 'Diced Tomatoes', 'VEGGIES');
+				insert into Ingredient (id, name, type) values ('LETC', 'Lettuce', 'VEGGIES');
+				insert into Ingredient (id, name, type) values ('CHED', 'Cheddar', 'CHEESE');
+				insert into Ingredient (id, name, type) values ('JACK', 'Monterrey Jack', 'CHEESE');
+				insert into Ingredient (id, name, type) values ('SLSA', 'Salsa', 'SAUCE');
+				insert into Ingredient (id, name, type) values ('SRCR', 'Sour Cream', 'SAUCE');
+			]]>
+		</sql>	
+	</changeSet>
+</databaseChangeLog>

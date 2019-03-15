@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	class="no-js css-menubar" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="bootstrap material admin template">
+    <meta name="author" content="">
+    
+    <title>Blank | Remark Material Admin Template</title>
+    
+    <link rel="apple-touch-icon" data-th-href="@{/theme/assets/images/apple-touch-icon.png}">
+    <link rel="shortcut icon" data-th-href="@{/theme/assets/images/favicon.ico}">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" data-th-href="@{/theme/css/bootstrap.min.css}">
+    <link rel="stylesheet" data-th-href="@{/theme/css/bootstrap-extend.min.css}">
+    <link rel="stylesheet" data-th-href="@{/theme/assets/css/site.min.css}">
+   
+    <!-- Plugins -->
+    <link rel="stylesheet" data-th-href="@{/theme/vendor/animsition/animsition.css}">
+    <link rel="stylesheet" data-th-href="@{/theme/vendor/asscrollable/asScrollable.css}">
+    <link rel="stylesheet" data-th-href="@{/theme/vendor/jquery-mmenu/jquery-mmenu.css}">
+    <link rel="stylesheet" data-th-href="@{/theme/vendor/flag-icon-css/flag-icon.css}">
+    
+    <!-- Fonts -->
+    <link rel="stylesheet" data-th-href="@{/theme/fonts/material-design/material-design.min.css}">
+    <link rel="stylesheet" data-th-href="@{/theme/fonts/brand-icons/brand-icons.min.css}"> 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic">
+   
+    <!-- Scripts -->
+    <script data-th-src="@{/theme/vendor/breakpoints/breakpoints.js}"></script>
+    <script>
+    	Breakpoints();
+    </script>
+  </head>
+  
+  <body class="animsition site-navbar-small">
+  	<div data-th-replace="layout/fragments/nav-menu-top :: nav-menu-top"></div>   
+    <div data-th-replace="layout/fragments/side-menu-left :: side-menu-left"></div>
+  	
+    <!-- Page -->
+    <div class="page">
+    	<section class="page"  layout:fragment="content"></section>
+    </div>
+    <!-- End Page -->
+
+    <!-- Footer -->
+    <div data-th-replace="layout/fragments/footer :: footer"></div>
+     
+    <!-- Core  -->
+    <script data-th-src="@{/theme/vendor/babel-external-helpers/babel-external-helpers.js}"></script>
+    <script data-th-src="@{/theme/vendor/jquery/jquery.js}"></script>
+    <script data-th-src="@{/theme/vendor/popper-js/umd/popper.min.js}"></script>
+    <script data-th-src="@{/theme/vendor/bootstrap/bootstrap.js}"></script>
+    <script data-th-src="@{/theme/vendor/animsition/animsition.js}"></script>
+    <script data-th-src="@{/theme/vendor/mousewheel/jquery.mousewheel.js}"></script> 
+    <script data-th-src="@{/theme/vendor/asscrollbar/jquery-asScrollbar.js}"></script>
+    <script data-th-src="@{/theme/vendor/asscrollable/jquery-asScrollable.js}"></script> 
+	<script data-th-src="@{/theme/vendor/waves/waves.js}"></script> 
+    
+    <!-- Plugins -->
+    <script data-th-src="@{/theme/vendor/jquery-mmenu/jquery.mmenu.min.all.js}"></script>
+	<script data-th-src="@{/theme/vendor/switchery/switchery.js}"></script>
+	<script data-th-src="@{/theme/vendor/slidepanel/jquery-slidePanel.js}"></script>
+    <script data-th-src="@{/theme/vendor/jquery-placeholder/jquery.placeholder.js}"></script>
+	
+    <!-- Scripts -->
+    <script data-th-src="@{/theme/js/Component.js}"></script>
+    <script data-th-src="@{/theme/js/Plugin.js}"></script>
+    <script data-th-src="@{/theme/js/Base.js}"></script> 
+    <script data-th-src="@{/theme/js/Config.js}"></script>
+    
+    <script data-th-src="@{/theme/assets/js/Section/Menubar.js}"></script>
+    <script data-th-src="@{/theme/assets/js/Section/Sidebar.js}"></script>
+    <script data-th-src="@{/theme/assets/js/Section/PageAside.js}"></script>
+    <script data-th-src="@{/theme/assets/js/Section/GridMenu.js}"></script>
+    
+     <!-- Config -->
+     <script data-th-inline="javascript">
+     /*<![CDATA[*/
+		var assets = /*[[@{/theme/assets}]]*/ ''; 
+	    Config.set('assets', assets);
+	 /*]]>*/	
+	 </script>
+
+    <!-- Page -->
+    <script data-th-src="@{/theme/assets/js/Site.js}"></script> 
+    <script data-th-src="@{/theme/js/Plugin/asscrollable.js}"></script>
+    <script data-th-src="@{/theme/js/Plugin/slidepanel.js}"></script>
+    <script data-th-src="@{/theme/js/Plugin/switchery.js}"></script>
+    <script data-th-src="@{/theme/js/Plugin/jquery-placeholder.js}"></script> 
+    <script data-th-src="@{/theme/js/Plugin/material.js}"></script>
+    
+    <div layout:fragment="extra-js"></div>
+    	    
+    <script>
+      (function(document, window, $){
+        'use strict';
+        var Site = window.Site;
+        $(document).ready(function(){
+          Site.run();
+        });
+      })(document, window, jQuery);
+    </script>
+    
+  </body>
+</html>

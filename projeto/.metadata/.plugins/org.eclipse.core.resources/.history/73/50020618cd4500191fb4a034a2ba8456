@@ -1,0 +1,56 @@
+package analiseskillus.com.br.config;
+
+import javax.persistence.EntityManagerFactory;
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+import relatorioskillus.com.br.model.Relatorio;
+import relatorioskillus.com.br.repositorio.Relatorios;
+
+@Configuration
+	@EnableTransactionManagement
+	@EnableJpaRepositories(basePackageClasses=Relatorios.class , entityManagerFactoryRef="mssqlserverDBEmFactory" , transactionManagerRef = "mssqlserverDSTransactionManager")
+	public class JPAOracleConfig {
+	 
+	  
+	   @Bean
+	       @ConfigurationProperties("spring.datasourcebanco2")
+	     public DataSourceProperties jpaOracleDSProperties() {
+	             return new DataSourceProperties();
+	                
+	 }
+	 
+	  @Bean
+	      public DataSource mssqlserverDataSource(@Qualifier("jpaOracleDSProperties") DataSourceProperties jpaOracleDSProperties) {
+	            
+	             DataSource dataSource = jpaOracleDSProperties.initializeDataSourceBuilder().build();
+	              return dataSource;
+	       }
+	       
+	        @Bean
+	    public LocalContainerEntityManagerFactoryBean jpaOracleDBEmFactory(@Qualifier("jpaOracleDataSource") DataSource mssqlserverDataSource, EntityManagerFactoryBuilder builder) {
+	          LocalContainerEntityManagerFactoryBean factory = builder.dataSource(mssqlserverDataSource).packages(Relatorio.class).build();
+	         factory.setPersistenceUnitName("sqlserver");
+	              return factory; 
+	   }
+	   
+	    
+	     @Bean
+	 public PlatformTransactionManager mssqlserverDSTransactionManager(EntityManagerFactory factory) {
+	         return new JpaTransactionManager(factory);
+	    }
+	    
+	     
+	}
+}

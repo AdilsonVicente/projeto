@@ -1,0 +1,20 @@
+package relatorioskillusportal.model;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class RelatorioPortal {
+
+	@Id
+	private Long codigo;
+
+	public Long getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(Long codigo) {
+		this.codigo = codigo;
+	}
+
+}

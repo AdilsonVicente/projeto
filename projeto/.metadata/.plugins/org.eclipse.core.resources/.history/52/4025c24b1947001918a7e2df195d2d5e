@@ -1,0 +1,30 @@
+package analiseskillus.com.br.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+import relatorioskillusportal.dto.VendaCiclo;
+import relatorioskillusportal.repositorio.RelatoriosPortal;
+
+@Controller
+public class DashboardController {
+
+	@Autowired
+	private RelatoriosPortal relatorios;
+	
+	@GetMapping("/")
+	public ModelAndView dashboard() {
+		ModelAndView mv = new ModelAndView("index");
+		return mv;
+	}
+	
+	@GetMapping("/totalPorCiclo")
+	public @ResponseBody List<VendaCiclo> listarTotalVendaPorCiclo() {
+		return relatorios.totalPorCiclo();
+	}
+}

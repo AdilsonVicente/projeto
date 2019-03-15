@@ -1,0 +1,23 @@
+package relatorioskillusportal.repositorio.helper;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import relatorioskillusportal.dto.VendaCiclo;
+
+public class VendasImpl implements VendasQueries{
+
+	@Autowired
+	private EntityManager manager;
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<VendaCiclo> totalPorCiclo() {
+		return manager.createNamedQuery("Vendas.totalPorCiclo").getResultList();
+		
+	}
+
+}

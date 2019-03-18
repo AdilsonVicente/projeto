@@ -27,30 +27,30 @@ import analiseskillus.com.br.repository.Usuarios;
 public class DataSourceDefaultConfig {
 
 	@Primary
-    @Bean
-@ConfigurationProperties("spring.datasource")
+	@Bean
+	@ConfigurationProperties("spring.datasource")
     public DataSourceProperties primaryDSProperties() {
         return new DataSourceProperties();
            
     }
     
      @Primary
-@Bean
-  public DataSource primaryDataSource(@Qualifier("primaryDSProperties") DataSourceProperties primaryDSProperties) {
-            return primaryDSProperties.initializeDataSourceBuilder().build();
-}
+     @Bean
+	  public DataSource primaryDataSource(@Qualifier("primaryDSProperties") DataSourceProperties primaryDSProperties) {
+	       return primaryDSProperties.initializeDataSourceBuilder().build();
+	}
 
-@Primary
-@Bean
-    public LocalContainerEntityManagerFactoryBean primaryDBEmFactory(@Qualifier("primaryDataSource") DataSource primaryDataSource, EntityManagerFactoryBuilder builder) {
-      return builder.dataSource(primaryDataSource).packages(Usuario.class).build();
-}
-
-@Primary
- @Bean
-     public PlatformTransactionManager primaryDSTransactionManager(EntityManagerFactory factory) {
-         return new JpaTransactionManager(factory);
-    }
+	@Primary
+	@Bean
+	public LocalContainerEntityManagerFactoryBean primaryDBEmFactory(@Qualifier("primaryDataSource") DataSource primaryDataSource, EntityManagerFactoryBuilder builder) {
+		return builder.dataSource(primaryDataSource).packages(Usuario.class).build();
+	}
+	
+	@Primary
+	@Bean
+	public PlatformTransactionManager primaryDSTransactionManager(EntityManagerFactory factory) {
+	     return new JpaTransactionManager(factory);
+	}
     
      
 }

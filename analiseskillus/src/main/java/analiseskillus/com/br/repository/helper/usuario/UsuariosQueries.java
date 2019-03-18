@@ -5,7 +5,9 @@ import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
 
+import analiseskillus.com.br.dto.UsuarioTeste;
 import analiseskillus.com.br.model.Usuario;
 import analiseskillus.com.br.repository.filter.UsuarioFilter;
 
@@ -19,5 +21,7 @@ public interface UsuariosQueries {
 	public Page<Usuario> filtrar(UsuarioFilter filtro, Pageable pageable);
 	
 	public Usuario buscarComGrupos(Long codigo);
+	
+	public List<UsuarioTeste> listarUsuario();
 
 }

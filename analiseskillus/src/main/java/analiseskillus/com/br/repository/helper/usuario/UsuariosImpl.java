@@ -24,6 +24,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
 import org.thymeleaf.util.StringUtils;
 
+import analiseskillus.com.br.dto.UsuarioTeste;
 import analiseskillus.com.br.model.Grupo;
 import analiseskillus.com.br.model.Usuario;
 import analiseskillus.com.br.model.UsuarioGrupo;
@@ -80,6 +81,12 @@ public class UsuariosImpl implements UsuariosQueries {
 		criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
 		
 		return (Usuario) criteria.uniqueResult();
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<UsuarioTeste> listarUsuario() {
+		return manager.createNamedQuery("Usuario.teste").getResultList();
 	}
 
 	private Long total(UsuarioFilter filtro) {

@@ -4,46 +4,60 @@
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_1.xsd"
     version="2.1">
     
-    <named-native-query name="Vendas.totalPorCiclo" result-set-mapping="totalPorCicloMapping">
+    <named-native-query name="Vendas.totalPorCiclo" result-set-mapping="totalPorCicloMapping" >
         <query>
-            SELECT  
-			    CASE   
-			        WHEN tipo = 'AT' THEN 'Ativacao / Recompra' 
-			        ELSE CASE 
-			            WHEN tipo = 'N' THEN 'Recompra' 
-			            ELSE CASE 
-			                WHEN tipo = 'PK' THEN 'Compra Plano' 
-			                ELSE CASE 
-			                    WHEN tipo = 'UK' THEN 'Upgrade de Plano' 
-			                    ELSE CASE 
-			                    WHEN tipo = 'LV' THEN 'Loja Virtual' 
-			                    ELSE CASE 
-			                    WHEN tipo = 'CV' THEN 'Convites Eventos' 
-			                    ELSE tipo 
-			                END 
-			                END 
-			                END 
-			            END 
-			        END 
-			    END tipo, 
-			    SUM(valor_venda) valor_venda 
-			 FROM 
-			    (SELECT DISTINCT 
-			        a.id, ROUND(FCVALOR_PEDIDO(a.id), 2) valor_venda, a.tipo 
-			    FROM 
-			        pedido_skl a 
-			    WHERE 
-			         a.situacao = 'P'  and a.pais = 'BR'
-			) AS v 
-			 GROUP BY tipo
+             SELECT  
+                CASE   
+                    WHEN tipo = 'AT' THEN 'Ativacao / Recompra' 
+                    ELSE CASE 
+                        WHEN tipo = 'N' THEN 'Recompra' 
+                        ELSE CASE 
+                            WHEN tipo = 'PK' THEN 'Compra Plano' 
+                            ELSE CASE 
+                                WHEN tipo = 'UK' THEN 'Upgrade de Plano' 
+                                ELSE CASE 
+                                WHEN tipo = 'LV' THEN 'Loja Virtual' 
+                                ELSE CASE 
+                                WHEN tipo = 'CV' THEN 'Convites Eventos' 
+                                ELSE tipo 
+                            END 
+                            END 
+                            END 
+                        END 
+                    END 
+                END tipo, 
+                SUM(valor_venda) valor_venda 
+             FROM 
+                (SELECT DISTINCT 
+                    a.id, ROUND(FCVALOR_PEDIDO(a.id), 2) valor_venda, a.tipo 
+                FROM 
+                    pedido_skl a 
+                WHERE 
+                     a.situacao = 'P'  and a.pais = 'BR'
+            ) AS v 
+             GROUP BY tipo
+        </query>
+    </named-native-query>
+    
+     <named-native-query name="Usuario.teste" result-set-mapping="totalUsuarioMapping" >
+        <query>
+            
+            SELECT nome, email FROM usuario
         </query>
     </named-native-query>
     
     <sql-result-set-mapping name="totalPorCicloMapping">
-        <constructor-result target-class="relatorioskillusportal.dto.VendaCiclo">
+        <constructor-result target-class="analiseskillusportal.com.br.dto.VendaCiclo">
             <column name="valorTotal" class="java.lang.String"/>
             <column name="tipo" class="java.lang.String"/>
         </constructor-result>
     </sql-result-set-mapping>
     
-</entity-mappings>
+    <sql-result-set-mapping name="totalUsuarioMapping">
+        <constructor-result target-class="analiseskillus.com.br.dto.UsuarioTeste">
+            <column name="nome" class="java.lang.String"/>
+            <column name="email" class="java.lang.String"/>
+        </constructor-result>
+    </sql-result-set-mapping>
+    
+ </entity-mappings>

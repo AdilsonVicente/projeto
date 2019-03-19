@@ -105,8 +105,9 @@
             <!-- End Widget Jvmap -->
           </div>
 
+       <!-- Widget Current Chart --> <!--  
           <div class="col-xxl-5 col-lg-5">
-            <!-- Widget Current Chart -->
+            
             <div class="card card-shadow" id="widgetCurrentChart">
               <div class="p-30 white bg-green-500">
                 <div class="font-size-20 mb-20">The current chart</div>
@@ -127,8 +128,24 @@
               </div>
             </div>
             
-          </div>
-
+          </div> -->
+          <div class="row">
+            <div class="col-sm-6">
+                <div class="md-graph-box">
+                    <div class="md-graph-box__header">
+                        <h2 class="md-graph-box__title">Vendas por ciclo</h2>
+                    </div>
+                    <div class="md-graph-box__content">
+                        <!--<div class="aw-graph-box__no-data">
+                            <i class="fa  fa-line-chart  fa-2x"></i>
+                            <span>Não há dados</span>
+                        </div>-->
+                        <div>
+                            <canvas id="graficoVendaCiclo" height="160"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
           <div class="col-xxl-5 col-lg-6">
             <!-- Panel Projects -->
             <div class="panel" id="projects">
@@ -319,6 +336,10 @@
       </div>
     </div>
     </section>
+    
+    <th:block layout:fragment="javascript-extra">
+         <script th:src="@{/javascript/vendor/Chart.min.js}"></script>
+    </th:block>
    
   </body>
 </html>

@@ -87,6 +87,7 @@ public class UsuariosImpl implements UsuariosQueries {
 	@Override
 	public List<UsuarioTeste> listarUsuario() {
 		return manager.createNamedQuery("Usuario.teste").getResultList();
+		
 	}
 
 	private Long total(UsuarioFilter filtro) {

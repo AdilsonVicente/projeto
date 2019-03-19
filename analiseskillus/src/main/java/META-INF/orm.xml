@@ -6,7 +6,7 @@
     
     <named-native-query name="Vendas.totalPorCiclo" result-set-mapping="totalPorCicloMapping" >
         <query>
-            SELECT  
+             SELECT  
                 CASE   
                     WHEN tipo = 'AT' THEN 'Ativacao / Recompra' 
                     ELSE CASE 

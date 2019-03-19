@@ -1,5 +1,6 @@
 package analiseskillus.com.br.dto;
 
+
 	public class UsuarioTeste {
 
 		private String nome;
